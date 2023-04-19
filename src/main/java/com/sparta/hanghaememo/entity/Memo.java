@@ -25,6 +25,8 @@ public class Memo extends Timestamped {
     @Column(nullable = false) //이게 받는 값
     private String password;
 
+    //MemoService에서 memoCreate 메서드가 requestDto를 인자로 전달하면
+    // 해당 매개변수를 이용해 memo를 초기화 한다.
     public Memo(MemoRequestDto requestDto) {
         this.author = requestDto.getAuthor();
         this.contents = requestDto.getContents();
@@ -32,6 +34,8 @@ public class Memo extends Timestamped {
         this.password = requestDto.getPassword();
     }
 
+    //MemoService.updateMemo 메서드를 사용할 때 인자로 전달되는 requestDto를
+    //받아 메모를 수정하기 위한 메서드
     public void update(MemoRequestDto requestDto) {
         this.author = requestDto.getAuthor();
         this.contents = requestDto.getContents();
